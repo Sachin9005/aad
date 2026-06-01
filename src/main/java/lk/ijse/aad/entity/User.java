@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @Data
 //getter,Setter,toString,equals
@@ -32,6 +30,7 @@ public class User {
     //use to send and get enum data as String data,Search and Save this enum
     private UserStatus status;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Department> phones;
+    @ManyToOne
+    @JoinColumn(name = "department_id")
+    private Department department;
 }
