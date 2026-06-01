@@ -31,4 +31,21 @@ public class UserController {
     public UserDTO searchUser(@PathVariable Long id) {
         return userService.getUserById(id);
     }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public UserDTO updateUser(@RequestBody UserDTO userDTO) {
+        return userService.updateUser(userDTO);
+    }
+
+    @PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public String updateUserStatus(@RequestBody UserDTO userDTO) {
+        userService.updateUserStatus(userDTO);
+        return "User status updated successfully";
+    }
+
+    @DeleteMapping(value = "/{userid}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String deleteUser(@PathVariable String userid) {
+        userService.deleteUser(Long.parseLong(userid));
+        return "User deleted successfully";
+    }
 }

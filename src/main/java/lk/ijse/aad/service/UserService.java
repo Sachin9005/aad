@@ -8,4 +8,7 @@ public interface UserService {
     UserDTO saveUser(UserDTO userDTO);
     List<UserDTO> getAllUsers();
     UserDTO getUserById(long id);
+    UserDTO updateUser(UserDTO userDTO);
+    void updateUserStatus(UserDTO userDTO);
+    void deleteUser(Long userId);
 }

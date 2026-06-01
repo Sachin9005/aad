@@ -31,4 +31,9 @@ public class DepartmentController {
     public DepartmentDTO searchDepartment(@PathVariable Long id) {
         return departmentService.getDepartmentById(id);
     }
+
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public DepartmentDTO updateDepartment(@RequestBody DepartmentDTO departmentDTO) {
+        return departmentService.updateDepartment(departmentDTO);
+    }
 }
