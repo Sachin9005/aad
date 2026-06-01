@@ -7,19 +7,20 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 
 @Entity
-@Table(name = "department")
-public class Department {
+@Table(name = "customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long departmentId;
-    private String departmentName;
-    private String departmentLocation;
+    private Long cusId;
+    private String cusName;
+    private String cusAddress;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<User> users;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    List<Order> orders;
+
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Data
 //getter,Setter,toString,equals
@@ -17,6 +18,7 @@ import java.util.Date;
 @Builder
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -29,4 +31,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     //use to send and get enum data as String data,Search and Save this enum
     private UserStatus status;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Department> phones;
 }
