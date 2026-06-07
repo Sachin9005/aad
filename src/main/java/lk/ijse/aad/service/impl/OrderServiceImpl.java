@@ -25,7 +25,8 @@ public class OrderServiceImpl implements OrderService {
     public void saveOrder(SaveOrderDTO orderDTO) {
         try {
             Order order = new Order();
-            order.setOrderDate(orderDTO.getOrderDate());
+            order.setDescription(orderDTO.getDescription());
+            order.setTotal(orderDTO.getTotal());
             Optional<Customer> customerOpt = customerRepository.findById(orderDTO.getCustomerId());
             if (customerOpt.isEmpty()) {
                 throw new RuntimeException("Customer not found with ID: " + orderDTO.getCustomerId());

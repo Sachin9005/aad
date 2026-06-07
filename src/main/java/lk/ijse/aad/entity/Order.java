@@ -16,8 +16,9 @@ import java.time.LocalDate;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
-    private LocalDate orderDate;
+    private long orderId;
+    private String description;
+    private double total;
 
     @ManyToOne(fetch = FetchType.LAZY)
     Customer customer;
