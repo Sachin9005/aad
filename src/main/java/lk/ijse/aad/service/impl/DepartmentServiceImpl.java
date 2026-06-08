@@ -45,8 +45,8 @@ public class DepartmentServiceImpl implements DepartmentService {
             return departmentDTOS;
         }catch (Exception e) {
             log.error("Error occurred while fetching departments: {}", e.getMessage());
+            throw new RuntimeException(e);
         }
-        return new ArrayList<>();
     }
 
     @Override
