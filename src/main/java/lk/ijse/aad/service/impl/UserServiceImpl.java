@@ -146,4 +146,28 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<UserDTO> searchUsersByName(String firstName, String lastName) {
+       try {
+          List<User> users = userRepository.findByFirstNameAndLastName(firstName, lastName);
+
+          List<UserDTO> userDTOS = new ArrayList<>();
+          for (User user : users) {
+              UserDTO userDTO = new UserDTO();
+              userDTO.setId(user.getId());
+              userDTO.setFirstName(user.getFirstName());
+              userDTO.setLastName(user.getLastName());
+              userDTO.setBirthDate(user.getBirthDate());
+              userDTO.setStatus(user.getStatus());
+              userDTOS.add(userDTO);
+          }
+          return userDTOS;
+       }catch (Exception e) {
+           log.error("Error searching users by name: {}", e.getMessage());
+           throw new RuntimeException(e);
+       }
+    }
+
+
 }

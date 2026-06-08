@@ -22,7 +22,7 @@ public class UserController {
         return userService.saveUser(userDTO);
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<UserDTO> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -47,5 +47,11 @@ public class UserController {
     public String deleteUser(@PathVariable String userid) {
         userService.deleteUser(Long.parseLong(userid));
         return "User deleted successfully";
+    }
+
+    @GetMapping(value = "/filter", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<UserDTO> searchUsersByName(@RequestParam (value = "firstName", required = false) String firstName,
+                                           @RequestParam (value = "lastName", required = false) String lastName) {
+        return userService.searchUsersByName(firstName, lastName).isEmpty() ? null : userService.searchUsersByName(firstName, lastName);
     }
 }

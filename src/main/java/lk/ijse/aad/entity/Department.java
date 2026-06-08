@@ -21,6 +21,6 @@ public class Department {
     private String departmentName;
     private String departmentLocation;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-    private List<User> users;
+//    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<User> users;
 }
