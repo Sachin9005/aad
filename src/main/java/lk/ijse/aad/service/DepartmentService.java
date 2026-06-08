@@ -9,4 +9,5 @@ public interface DepartmentService {
     List<DepartmentDTO> getAllDepartments();
     DepartmentDTO getDepartmentById(Long id);
     DepartmentDTO updateDepartment(DepartmentDTO departmentDTO);
+    List<DepartmentDTO> searchDepartmentByFilter(String depName, String depLocation);
 }
